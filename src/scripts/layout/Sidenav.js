@@ -1,8 +1,8 @@
 import React from "react"
 
-function SidenavItem({title, icon}) {
+function SidenavItem({title, icon, className}) {
     return (
-        <div className="ttd-sidenav__item">
+        <div className={`ttd-sidenav__item ${className ? className : ``}`}>
             {icon}
             {title}
         </div>
@@ -16,7 +16,7 @@ function Sidenav() {
 
             <div className="ttd-sidenav__items">
                 <div className="ttd-sidenav__items-block">
-                    <SidenavItem title="Dashboard" icon={<i className="fa fa-home"/>}/>
+                    <SidenavItem className="ttd-sidenav__item_active" title="Dashboard" icon={<i className="fa fa-home"/>}/>
                     <SidenavItem title="Projects" icon={<i className="fa fa-folder-open"/>}/>
                     <SidenavItem title="Stats" icon={<i className="fa fa-chart-bar"/>}/>
                     <SidenavItem title="Calendar" icon={<i className="far fa-calendar-alt"/>}/>

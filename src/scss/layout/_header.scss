@@ -1,0 +1,67 @@
+.ttd-header {
+  padding: 2.25rem 2.25rem 0 2.25rem;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__block {
+    display: flex;
+  }
+
+  &__search-form {
+    color: $text-light;
+
+    &__input {
+      font-family: Helvetica normal;
+
+      &::placeholder {
+        color: $text-light;
+      }
+    }
+
+    i {
+      margin-right: 1.15rem;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+
+    &-menu__wrapper {
+      margin: 0 1.5rem;
+
+      i {
+        margin-left: 0.8rem;
+      }
+    }
+
+    &-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__notifications {
+    position:relative;
+    font-size: 1.2rem;
+
+    &::after {
+      content: "";
+      display:block;
+      width:10px;
+      height:10px;
+      border:1px solid #ffffff;
+      border-radius: 50%;
+      background:$accent;
+      position:absolute;
+      top:3px;
+      right:-2px;
+    }
+  }
+
+}
