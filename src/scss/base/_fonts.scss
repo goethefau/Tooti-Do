@@ -1,0 +1,16 @@
+@mixin font($fname, $url) {
+  @font-face {
+    font-family: $fname;
+    src: url($url) format("truetype");
+  }
+}
+
+// Roboto
+@include font(Roboto normal, "../../assets/fonts/Roboto/Roboto-Regular.ttf");
+@include font(Roboto medium, "../../assets/fonts/Roboto/Roboto-Medium.ttf");
+@include font(Roboto bold, "../../assets/fonts/Roboto/Roboto-Bold.ttf");
+
+// Helvetica
+@include font(Helvetica normal, "../../assets/fonts/Helvetica/HelveticaRegular.ttf");
+@include font(Helvetica medium, "../../assets/fonts/Helvetica/HelveticaMedium.ttf");
+@include font(Helvetica bold, "../../assets/fonts/Helvetica/HelveticaBold.ttf");
