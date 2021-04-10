@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74c5dd93-56bc-4935-b64a-1e6925b4e270" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/pexels-pixabay-220453.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/layout/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scss/layout/_header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/components/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scss/base/_general.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scss/components/_dashboard.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/layout/Sidenav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/layout/Sidenav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/base/_index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/base/_index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/layout/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/layout/_header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/layout/_main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/layout/_main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/layout/_sidenav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/layout/_sidenav.scss" afterDir="false" />
     </list>
@@ -20,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -89,7 +91,8 @@
       <workItem from="1617960906293" duration="1145000" />
       <workItem from="1617965989642" duration="450000" />
       <workItem from="1617966632653" duration="403000" />
-      <workItem from="1617967401119" duration="6158000" />
+      <workItem from="1617967401119" duration="8819000" />
+      <workItem from="1618035638736" duration="8047000" />
     </task>
     <servers />
   </component>

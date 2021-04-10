@@ -2,8 +2,12 @@
 @import "base/reboot";
 @import "base/fonts";
 @import "base/index";
+@import "base/general";
 
 // Layout
 @import "layout/main";
 @import "layout/sidenav";
 @import "layout/header";
+
+// Components
+@import "components/dashboard";

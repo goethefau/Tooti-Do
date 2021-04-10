@@ -1,0 +1,157 @@
+.ttd-dashboard {
+  flex-grow:1;
+  display: flex;
+  flex-direction: column;
+
+  &__headline {
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    margin: 0 2.25rem;
+
+    &-title {
+      font-size: 1.25rem;
+      font-family: Helvetica medium;
+    }
+
+    &-toolbar {
+      &__item + &__item {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+
+  &__columns {
+    flex-grow:1;
+    margin: 2.25rem 2.25rem 0.25rem 2.25rem;
+    position:relative;
+
+    &-inner {
+      position: absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+
+      display:flex;
+      overflow-x: auto;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &__column {
+    width:290px;
+
+    display:flex;
+    flex-direction: column;
+
+    & + & {
+      margin-left: 1.5rem;
+    }
+
+    &-inner {
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    &-headline {
+      display: flex;
+      justify-content: space-between;
+      font-family: Helvetica medium;
+      margin-bottom: 1.15rem;
+
+      &__count {
+        color:$accent;
+      }
+    }
+
+    &-todo {
+      box-shadow: 0 1px 2px rgba(21, 21, 21, 0.1);
+      border:1px solid #EDEEEF;
+      background:#ffffff;
+      border-radius: 8px;
+      font-family:Roboto medium;
+
+      & + & {
+        margin-top: 1.15rem;
+      }
+
+      &__img {
+        height:150px;
+        width:100%;
+        object-fit:cover;
+        object-position: center;
+        border-radius: 8px;
+      }
+
+      &__content {
+        padding: 1.5rem 1.15rem;
+      }
+
+      &__priority {
+        display:inline-block;
+        vertical-align:middle;
+        width:6px;
+        height:6px;
+        border-radius:100%;
+        margin-right: 1.1rem;
+      }
+
+      &__title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 12px;
+      }
+
+      &__description {
+        color:$text-light;
+        margin-bottom: 1.5rem;
+      }
+
+      &__users {
+        display: flex;
+      }
+
+      &__user {
+        width:34px;
+        height:34px;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+
+        border-radius:50%;
+        border:2px solid #ffffff;
+        font-size: 13px;
+        font-family: Roboto bold;
+        color:#ffffff;
+
+        cursor:pointer;
+        background:$text-ultra-light;
+
+        & + & {
+          margin-left: -10px;
+        }
+
+      }
+
+      &__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        color:$text-light;
+        font-family:Roboto medium;
+        margin-top: 1rem;
+
+        &-date i, &-subtasks i {
+          margin-right: 12px;
+        }
+
+        &-subtasks {
+          margin: 0 0.8rem;
+        }
+      }
+    }
+  }
+}
