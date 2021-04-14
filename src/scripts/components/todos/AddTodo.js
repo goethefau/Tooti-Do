@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import {Drawer, Button, Input, FormControl, Form, TagPicker, DatePicker} from "rsuite";
+import FileInput from "../FileInput";
 
 const data = [
     {
@@ -77,21 +78,18 @@ const data = [
 ]
 
 // General
+
 class AddTodo extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            show: true
-        };
+        this.state = {show: false};
 
         this.close = this.close.bind(this);
         this.toggleDrawer = this.toggleDrawer.bind(this);
     }
 
     close() {
-        this.setState({
-            show: false
-        });
+        this.setState({show: false});
     }
 
     toggleDrawer() {
@@ -101,7 +99,7 @@ class AddTodo extends React.Component {
     render() {
         return (
             <>
-                <div style={{display: "inline-block"}} onClick={this.toggleDrawer}>{this.props.button}</div>
+                <div style={{display: "inline-block"}} onClick={this.toggleDrawer}>{this.props.children}</div>
                 <Drawer
                     show={this.state.show}
                     onHide={this.close}
@@ -112,12 +110,24 @@ class AddTodo extends React.Component {
                         <Form className="ttd-add-todo__body" fluid>
                             <div className="ttd-add-todo__body-wrapper">
                                 <div className="ttd-add-todo__group">
-                                    <div className="ttd-add-todo__group-title">Create new Todo</div>
+                                    <div
+                                        className="ttd-add-todo__group-title d-flex justify-content-between align-items-center">
+                                        Create new Todo
+                                        <Button onClick={this.close} className="ttd-add-todo__dismiss"
+                                                appearance="subtle">
+                                            <i className="far fa-times"/>
+                                        </Button>
+                                    </div>
                                     <Input placeholder="Title" size="lg"/>
                                 </div>
                                 <div className="ttd-add-todo__group">
-                                    <FormControl size="lg" rows={6} name="textarea" componentClass="textarea"
-                                                 placeholder="Description"/>
+                                    <FormControl
+                                        size="lg"
+                                        rows={6}
+                                        name="textarea"
+                                        c omponentClass="textarea"
+                                        placeholder="Description"
+                                    />
                                 </div>
                                 <div className="ttd-add-todo__group">
                                     <div className="ttd-add-todo__group-priority">
@@ -127,80 +137,45 @@ class AddTodo extends React.Component {
                                                 <input name="priority"
                                                        className="ttd-add-todo__group-priority__item-input"
                                                        type="radio"/>
-                                                <div style={{background: "#F8FAFF", color: "#6EA0FF"}}
-                                                     className="ttd-add-todo__group-priority__item__fake-radio">Normal
+                                                <div
+                                                    className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_normal">
+                                                    Normal
                                                 </div>
                                             </label>
                                             <label className="ttd-add-todo__group-priority__item">
                                                 <input name="priority"
                                                        className="ttd-add-todo__group-priority__item-input"
                                                        type="radio"/>
-                                                <div style={{background: "#FFFAF2", color: "#FAA018"}}
-                                                     className="ttd-add-todo__group-priority__item__fake-radio">Medium
+                                                <div
+                                                    className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_medium">
+                                                    Medium
                                                 </div>
                                             </label>
                                             <label className="ttd-add-todo__group-priority__item">
                                                 <input name="priority"
                                                        className="ttd-add-todo__group-priority__item-input"
                                                        type="radio"/>
-                                                <div style={{background: "#FFF5F4", color: "#F55449"}}
-                                                     className="ttd-add-todo__group-priority__item__fake-radio">High
+                                                <div
+                                                    className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_high">
+                                                    High
                                                 </div>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="ttd-add-todo__group">
-                                    <div className="ttd-add-todo__group__attach-files">
-                                        <label className="ttd-add-todo__group__attach-files__label">
-                                            <div
-                                                className="ttd-add-todo__group__attach-files__fake-input rs-input rs-input-lg">
-                                            <span className="ttd-add-todo__group__attach-files__fake-input__value">
-                                                Attach files
-                                            </span>
-                                                <i className="far fa-cloud-download"/>
-                                            </div>
-                                            <input className="ttd-add-todo__group__attach-files__input" type="file"/>
-                                        </label>
-                                        <div className="ttd-add-todo__group__attach-files__uploads">
-                                            <div className="ttd-add-todo__group__attach-files__uploads-item">
-                                                <div className="ttd-add-todo__group__attach-files__uploads-item__icon">
-                                                    <i className="far fa-link"/>
-                                                </div>
-                                                <div className="ttd-add-todo__group__attach-files__uploads-item__title">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                    atque beatae cum eum, in laboriosam modi quod ut velit vitae.
-                                                </div>
-                                                <div>
-                                                    <Button appearance="subtle"
-                                                            className="ttd-add-todo__group__attach-files__uploads-item__action-remove">
-                                                        <i className="fa fa-trash"/>
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                            <div className="ttd-add-todo__group__attach-files__uploads-item">
-                                                <div className="ttd-add-todo__group__attach-files__uploads-item__icon">
-                                                    <i className="far fa-link"/>
-                                                </div>
-                                                <div className="ttd-add-todo__group__attach-files__uploads-item__title">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                    atque beatae cum eum, in laboriosam modi quod ut velit vitae.
-                                                </div>
-                                                <div>
-                                                    <Button appearance="subtle"
-                                                            className="ttd-add-todo__group__attach-files__uploads-item__action-remove">
-                                                        <i className="fa fa-trash"/>
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <FileInput/>
                                 </div>
                                 <div className="ttd-add-todo__group">
                                     <div className="ttd-add-todo__group-title">Add users</div>
                                     <div>
-                                        <TagPicker placement="top" size="lg" data={data} groupBy="role"
-                                                   style={{width: "100%"}}/>
+                                        <TagPicker
+                                            placement="top"
+                                            size="lg"
+                                            data={data}
+                                            groupBy="role"
+                                            style={{width: "100%"}}
+                                        />
                                     </div>
                                 </div>
                             </div>

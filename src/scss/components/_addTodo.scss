@@ -13,6 +13,11 @@
     }
   }
 
+  &__dismiss {
+    color:$text-light;
+    font-size: 1.15rem;
+  }
+
   &__group {
     &-title {
       margin-bottom: 1.25rem;
@@ -49,6 +54,35 @@
           font-family: Roboto bold;
           border-radius: 6px;
           border: 1px solid transparent;
+          transition: all 200ms;
+
+          &_normal {
+            background: #F8FAFF;
+            color: #6EA0FF;
+
+            &:hover {
+              border-color: #6EA0FF;
+            }
+          }
+
+          &_medium {
+            background: #FFFAF2;
+            color: #FAA018;
+
+            &:hover {
+              border-color: #FAA018;
+            }
+          }
+
+          &_high {
+            background: #FFF5F4;
+            color: #F55449;
+
+            &:hover {
+              border-color: #F55449;
+            }
+          }
+
         }
       }
     }
