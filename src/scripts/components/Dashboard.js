@@ -1,14 +1,38 @@
-import React from "react";
+import React, {useRef} from "react";
 
 // Components
 import {Button} from "rsuite";
 
-// General
+// Functionality
+import AddTodo from "./AddTodo";
 
-function Todo() {
+// General
+function Toolbar() {
+    return (
+        <div className="ttd-dashboard__headline-toolbar">
+            <AddTodo button={
+                <Button className="ttd-btn ttd-btn_light ttd-dashboard__headline-toolbar__item" appearance="subtle">
+                    <i className="far fa-plus"/>
+                </Button>
+            }/>
+            <Button className="ttd-btn ttd-btn_light ttd-dashboard__headline-toolbar__item" appearance="subtle">
+                <i className="fa fa-sort"/>
+            </Button>
+            <Button className="ttd-btn ttd-btn_light ttd-dashboard__headline-toolbar__item" appearance="subtle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10.667" viewBox="0 0 16 10.667">
+                    <path id="Icon_material-filter-list" data-name="Icon material-filter-list"
+                          d="M10.722,19.667h3.556V17.889H10.722ZM4.5,9v1.778h16V9Zm2.667,6.222H17.833V13.444H7.167Z"
+                          transform="translate(-4.5 -9)" fill="#b3b9bd"/>
+                </svg>
+            </Button>
+        </div>
+    )
+}
+
+function Todo({img}) {
     return (
         <div className="ttd-dashboard__column-todo">
-            <img src="images/img.png" alt="" className="ttd-dashboard__column-todo__img"/>
+            <img src={img} alt="" className="ttd-dashboard__column-todo__img"/>
             <div className="ttd-dashboard__column-todo__content">
                 <div className="ttd-dashboard__column-todo__title">
                     <div className="ttd-dashboard__column-todo__priority" style={{background: "#6EA0FF"}}/>
@@ -53,11 +77,11 @@ function Column({title}) {
         <div className="ttd-dashboard__column">
             <div className="ttd-dashboard__column-headline">
                 {title}
-                <span className="ttd-dashboard__column-headline__count">( 0 )</span>
+                <span className="ttd-dashboard__column-headline__count">( 1 )</span>
             </div>
             <div className="ttd-dashboard__column-inner">
-                <Todo/>
-                <Todo/>
+                <Todo
+                    img="https://cdn.dribbble.com/users/1187002/screenshots/15378278/media/b12fe4276137f73ea3d629e41c2fd192.png?compress=1&resize=1000x750"/>
             </div>
         </div>
     )
@@ -70,31 +94,13 @@ function Dashboard() {
                 <div className="ttd-dashboard__headline-title">
                     Dashboard
                 </div>
-                <div className="ttd-dashboard__headline-toolbar">
-                    <Button className="ttd-btn ttd-btn_light ttd-dashboard__headline-toolbar__item" appearance="subtle">
-                        <i className="far fa-plus"/>
-                    </Button>
-                    <Button className="ttd-btn ttd-btn_light ttd-dashboard__headline-toolbar__item" appearance="subtle">
-                        <i className="fa fa-sort"/>
-                    </Button>
-                    <Button className="ttd-btn ttd-btn_light ttd-dashboard__headline-toolbar__item" appearance="subtle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10.667" viewBox="0 0 16 10.667">
-                            <path id="Icon_material-filter-list" data-name="Icon material-filter-list"
-                                  d="M10.722,19.667h3.556V17.889H10.722ZM4.5,9v1.778h16V9Zm2.667,6.222H17.833V13.444H7.167Z"
-                                  transform="translate(-4.5 -9)" fill="#b3b9bd"/>
-                        </svg>
-                    </Button>
-                </div>
+                <Toolbar/>
             </div>
             <div className="ttd-dashboard__columns">
                 <div className="ttd-dashboard__columns-inner">
                     <Column title="To do"/>
-                    <Column title="To do"/>
-                    <Column title="To do"/>
-                    <Column title="To do"/>
-                    <Column title="To do"/>
-                    <Column title="To do"/>
-                    <Column title="To do"/>
+                    <Column title="In progress"/>
+                    <Column title="Completed"/>
                 </div>
             </div>
         </div>
