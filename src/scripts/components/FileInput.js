@@ -36,7 +36,6 @@ function FileInput() {
 
             <div className="ttd-add-todo__group__attach-files__uploads">
                 <File/>
-                <File/>
             </div>
         </div>
     )

@@ -14,7 +14,7 @@
   }
 
   &__dismiss {
-    color:$text-light;
+    color: $text-light;
     font-size: 1.15rem;
   }
 
@@ -60,7 +60,7 @@
             background: #F8FAFF;
             color: #6EA0FF;
 
-            &:hover {
+            &:hover, &-active {
               border-color: #6EA0FF;
             }
           }
@@ -69,7 +69,7 @@
             background: #FFFAF2;
             color: #FAA018;
 
-            &:hover {
+            &:hover, &-active {
               border-color: #FAA018;
             }
           }
@@ -78,7 +78,7 @@
             background: #FFF5F4;
             color: #F55449;
 
-            &:hover {
+            &:hover, &-active {
               border-color: #F55449;
             }
           }

@@ -1,213 +1,152 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useForm} from "react-hook-form";
+import {FORMAT} from "../../moment.config";
+import {Drawer, Button, Form} from "rsuite";
+import * as yup from "yup"
+import {yupResolver} from '@hookform/resolvers/yup';
 
 // Components
-import {Drawer, Button, Input, FormControl, Form, TagPicker, DatePicker} from "rsuite";
 import FileInput from "../FileInput";
+import DatePicker from "../DatePicker";
+import TextField from "../TextField";
+import TagPicker from "../TagPicker";
 
-const data = [
-    {
-        "label": "Eugenia",
-        "value": "Eugenia",
-        "role": "Master"
-    },
-    {
-        "label": "Kariane",
-        "value": "Kariane",
-        "role": "Master"
-    },
-    {
-        "label": "Louisa",
-        "value": "Louisa",
-        "role": "Master"
-    },
-    {
-        "label": "Marty",
-        "value": "Marty",
-        "role": "Master"
-    },
-    {
-        "label": "Kenya",
-        "value": "Kenya",
-        "role": "Master"
-    },
-    {
-        "label": "Hal",
-        "value": "Hal",
-        "role": "Developer"
-    },
-    {
-        "label": "Julius",
-        "value": "Julius",
-        "role": "Developer"
-    },
-    {
-        "label": "Travon",
-        "value": "Travon",
-        "role": "Developer"
-    },
-    {
-        "label": "Vincenza",
-        "value": "Vincenza",
-        "role": "Developer"
-    },
-    {
-        "label": "Dominic",
-        "value": "Dominic",
-        "role": "Developer"
-    },
-    {
-        "label": "Pearlie",
-        "value": "Pearlie",
-        "role": "Guest"
-    },
-    {
-        "label": "Tyrel",
-        "value": "Tyrel",
-        "role": "Guest"
-    },
-    {
-        "label": "Jaylen",
-        "value": "Jaylen",
-        "role": "Guest"
-    },
-    {
-        "label": "Rogelio",
-        "value": "Rogelio",
-        "role": "Guest"
-    }
-]
+// Schema
+const schema = yup.object().shape({
+    title: yup
+        .string()
+        .min(8, "The title must be at least 8 characters")
+        .max(256, "The title must be no more than 256 characters")
+        .required("This field is required"),
+    users: yup
+        .array()
+        .min(1, "Please select users")
+
+})
 
 // General
+function AddTodo(props) {
+    const [drawer, setDrawer] = useState({show: true})
 
-class AddTodo extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {show: false};
+    const close = () => setDrawer({show: false});
+    const toggleDrawer = () => setDrawer({show: true});
 
-        this.close = this.close.bind(this);
-        this.toggleDrawer = this.toggleDrawer.bind(this);
-    }
+    // React hook form
+    const {handleSubmit, control, setError} = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange"
+    });
+    const onSubmit = (data) => console.log(data)
 
-    close() {
-        this.setState({show: false});
-    }
-
-    toggleDrawer() {
-        this.setState({show: true});
-    }
-
-    render() {
-        return (
-            <>
-                <div style={{display: "inline-block"}} onClick={this.toggleDrawer}>{this.props.children}</div>
-                <Drawer
-                    show={this.state.show}
-                    onHide={this.close}
-                    size="sm"
-                    duration={150}
-                >
-                    <div className="ttd-add-todo">
-                        <Form className="ttd-add-todo__body" fluid>
-                            <div className="ttd-add-todo__body-wrapper">
-                                <div className="ttd-add-todo__group">
-                                    <div
-                                        className="ttd-add-todo__group-title d-flex justify-content-between align-items-center">
-                                        Create new Todo
-                                        <Button onClick={this.close} className="ttd-add-todo__dismiss"
-                                                appearance="subtle">
-                                            <i className="far fa-times"/>
-                                        </Button>
-                                    </div>
-                                    <Input placeholder="Title" size="lg"/>
+    // View
+    return (
+        <>
+            <div style={{display: "inline-block"}} onClick={toggleDrawer}>{props.children}</div>
+            <Drawer
+                show={drawer.show}
+                onHide={close}
+                size="sm"
+                duration={150}
+            >
+                <div className="ttd-add-todo">
+                    <Form onSubmit={handleSubmit(onSubmit)} className="ttd-add-todo__body" noValidate fluid>
+                        <div className="ttd-add-todo__body-wrapper">
+                            <div className="ttd-add-todo__group">
+                                <div
+                                    className="ttd-add-todo__group-title d-flex justify-content-between align-items-center">
+                                    Create new Todo
+                                    <Button onClick={close} className="ttd-add-todo__dismiss" appearance="subtle">
+                                        <i className="far fa-times"/>
+                                    </Button>
                                 </div>
-                                <div className="ttd-add-todo__group">
-                                    <FormControl
-                                        size="lg"
-                                        rows={6}
-                                        name="textarea"
-                                        c omponentClass="textarea"
-                                        placeholder="Description"
-                                    />
-                                </div>
-                                <div className="ttd-add-todo__group">
-                                    <div className="ttd-add-todo__group-priority">
-                                        <div className="ttd-add-todo__group-title m-0">Priority</div>
-                                        <div className="ttd-add-todo__group-priority__items">
-                                            <label className="ttd-add-todo__group-priority__item">
-                                                <input name="priority"
-                                                       className="ttd-add-todo__group-priority__item-input"
-                                                       type="radio"/>
-                                                <div
-                                                    className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_normal">
-                                                    Normal
-                                                </div>
-                                            </label>
-                                            <label className="ttd-add-todo__group-priority__item">
-                                                <input name="priority"
-                                                       className="ttd-add-todo__group-priority__item-input"
-                                                       type="radio"/>
-                                                <div
-                                                    className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_medium">
-                                                    Medium
-                                                </div>
-                                            </label>
-                                            <label className="ttd-add-todo__group-priority__item">
-                                                <input name="priority"
-                                                       className="ttd-add-todo__group-priority__item-input"
-                                                       type="radio"/>
-                                                <div
-                                                    className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_high">
-                                                    High
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="ttd-add-todo__group">
-                                    <FileInput/>
-                                </div>
-                                <div className="ttd-add-todo__group">
-                                    <div className="ttd-add-todo__group-title">Add users</div>
-                                    <div>
-                                        <TagPicker
-                                            placement="top"
-                                            size="lg"
-                                            data={data}
-                                            groupBy="role"
-                                            style={{width: "100%"}}
-                                        />
+
+                                <TextField
+                                    control={control}
+                                    placeholder="Title"
+                                    name="title"
+                                />
+                            </div>
+                            <div className="ttd-add-todo__group">
+                                <TextField
+                                    control={control}
+                                    placeholder="Description"
+                                    name="description"
+                                    componentClass="textarea"
+                                    rows={6}
+                                />
+                            </div>
+                            <div className="ttd-add-todo__group">
+                                <div className="ttd-add-todo__group-priority">
+                                    <div className="ttd-add-todo__group-title m-0">Priority</div>
+                                    <div className="ttd-add-todo__group-priority__items">
+                                        <label className="ttd-add-todo__group-priority__item">
+                                            <input name="priority"
+                                                   className="ttd-add-todo__group-priority__item-input"
+                                                   type="radio"/>
+                                            <div
+                                                className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_normal">
+                                                Normal
+                                            </div>
+                                        </label>
+                                        <label className="ttd-add-todo__group-priority__item">
+                                            <input name="priority"
+                                                   className="ttd-add-todo__group-priority__item-input"
+                                                   type="radio"/>
+                                            <div
+                                                className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_medium">
+                                                Medium
+                                            </div>
+                                        </label>
+                                        <label className="ttd-add-todo__group-priority__item">
+                                            <input name="priority"
+                                                   className="ttd-add-todo__group-priority__item-input"
+                                                   type="radio"/>
+                                            <div
+                                                className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_high">
+                                                High
+                                            </div>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="ttd-add-todo__footer">
-                                <div className="ttd-add-todo__footer__due-date">
-                                    <div className="ttd-add-todo__footer__due-date__title ttd-add-todo__group-title">Due
-                                        date
-                                    </div>
-                                    <DatePicker
-                                        format="YYYY-MM-DD HH:mm:ss"
-                                        ranges={[
-                                            {
-                                                label: 'Now',
-                                                value: new Date()
-                                            }
-                                        ]}
-                                        placement="top"
-                                    />
-                                </div>
-                                <button type="submit"
-                                        className="ttd-add-todo__footer__submit ttd-btn ttd-btn_accent">
-                                    Add Todo
-                                </button>
+                            <div className="ttd-add-todo__group">
+                                <FileInput/>
                             </div>
-                        </Form>
-                    </div>
+                            <div className="ttd-add-todo__group">
+                                <div className="ttd-add-todo__group-title">Add users</div>
+                                <TagPicker
+                                    placement="top"
+                                    size="lg"
+                                    style={{width: "100%"}}
+                                    control={control}
+                                    name="users"
+                                    setError={setError}
+                                />
+                            </div>
+                        </div>
 
-                </Drawer>
-            </>
-        )
-    }
+                        <div className="ttd-add-todo__footer">
+                            <div className="ttd-add-todo__footer__due-date">
+                                <div className="ttd-add-todo__footer__due-date__title ttd-add-todo__group-title">
+                                    Due date
+                                </div>
+
+                                <DatePicker
+                                    control={control}
+                                    placement="top"
+                                    format={`${FORMAT} HH:mm`}
+                                />
+                            </div>
+                            <button type="submit" className="ttd-add-todo__footer__submit ttd-btn ttd-btn_accent">
+                                Add Todo
+                            </button>
+                        </div>
+                    </Form>
+                </div>
+
+            </Drawer>
+        </>
+    )
 }
 
 export default AddTodo

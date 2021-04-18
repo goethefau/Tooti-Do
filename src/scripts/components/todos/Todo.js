@@ -1,18 +1,22 @@
 import React from 'react'
-import {Button} from "rsuite";
+import {Button, Dropdown} from "rsuite";
+import Moment from "react-moment"
+import {FORMAT} from "../../moment.config"
 
-function Todo({img}) {
+function Todo({todo}) {
+
     return (
         <div className="ttd-dashboard__column-todo">
-            <img src={img} alt="" className="ttd-dashboard__column-todo__img"/>
+            {
+                todo.img && <img src={todo.img} alt="" className="ttd-dashboard__column-todo__img"/>
+            }
             <div className="ttd-dashboard__column-todo__content">
                 <div className="ttd-dashboard__column-todo__title">
                     <div className="ttd-dashboard__column-todo__priority" style={{background: "#6EA0FF"}}/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, voluptatem
+                    {todo.title}
                 </div>
                 <div className="ttd-dashboard__column-todo__description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <p>Aliquam delectus nisi, non qui tempore unde veritatis?</p>
+                    {todo.description}
                 </div>
                 <div className="ttd-dashboard__column-todo__users">
                     <div className="ttd-dashboard__column-todo__user" style={{background: "#6EA0FF"}}>MV</div>
@@ -22,15 +26,44 @@ function Todo({img}) {
                 <div className="ttd-dashboard__column-todo__meta">
                     <div className="ttd-dashboard__column-todo__meta-date">
                         <i className="fa fa-alarm-clock"/>
-                        28 May 2021
+                        <Moment format={FORMAT}>
+                            {todo.due_date}
+                        </Moment>
                     </div>
                     <div className="ttd-dashboard__column-todo__meta-subtasks">
                         <i className="far fa-clipboard-list"/>
                         6 / 9
                     </div>
-                    <Button appearance="subtle" className="ttd-dashboard__column-todo__meta-actions">
-                        <i className="far fa-ellipsis-h"/>
-                    </Button>
+                    <Dropdown
+                        renderTitle={() => {
+                            return (
+                                <Button appearance="subtle"
+                                        className="ttd-dashboard__column-todo__meta-actions__button">
+                                    <i className="far fa-ellipsis-h"/>
+                                </Button>
+                            );
+                        }}
+                        placement="topEnd"
+                    >
+                        <Dropdown.Item className="ttd-dashboard__column-todo__meta-actions__item">
+                            <div className="ttd-dashboard__column-todo__meta-actions__item">
+                                <i className="far fa-trash"/>
+                                Delete Task
+                            </div>
+                        </Dropdown.Item>
+                        <Dropdown.Item className="ttd-dashboard__column-todo__meta-actions__item">
+                            <div className="ttd-dashboard__column-todo__meta-actions__item">
+                                <i className="far fa-pen"/>
+                                Edit Task
+                            </div>
+                        </Dropdown.Item>
+                        <Dropdown.Item className="ttd-dashboard__column-todo__meta-actions__item">
+                            <div className="ttd-dashboard__column-todo__meta-actions__item">
+                                <i className="far fa-share"/>
+                                Share
+                            </div>
+                        </Dropdown.Item>
+                    </Dropdown>
                 </div>
             </div>
         </div>

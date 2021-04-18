@@ -1,37 +1,90 @@
-import React, {useEffect} from "react";
-import {connect} from "react-redux";
+import React, {useEffect, useState} from "react";
 
 // Components
 import Todo from "./Todo";
 import Toolbar from "./DashboardToolbar";
 
 // Actions
-import loadTodos from "../../redux/todos/actions";
+import {Loader} from "rsuite";
+import Http from "../../Http";
+import data from "./data"
 
 // General
 
-function Column({title}) {
+function Column({title, isLoading, todos}) {
+
+    const loading = (
+        <div className="d-flex align-items-center ttd-text-dark">
+            Loading
+            <Loader size="xs" className="ms-4"/>
+        </div>
+    )
+    const noTodos = (
+        <div>No todos</div>
+    )
+
     return (
         <div className="ttd-dashboard__column">
             <div className="ttd-dashboard__column-headline">
                 {title}
-                <span className="ttd-dashboard__column-headline__count">( 1 )</span>
+                <span className="ttd-dashboard__column-headline__count">( {todos.length} )</span>
             </div>
             <div className="ttd-dashboard__column-inner">
-                <Todo
-                    img="https://cdn.dribbble.com/users/1187002/screenshots/15378278/media/b12fe4276137f73ea3d629e41c2fd192.png?compress=1&resize=1000x750"
-                />
+                {
+                    isLoading ? loading : todos.length === 0 ? noTodos : todos.map(todo => <Todo key={todo.id}
+                                                                                                 todo={todo}/>)
+                }
             </div>
         </div>
     )
 }
 
-function Dashboard({todos, dispatch}) {
+
+function Dashboard() {
+
+    // Init state
+    const initialState = {
+        isLoading: false,
+        data: []
+    }
+
+    const [state, setState] = useState(initialState)
+
+    // Get todos
+
+    const getTodos = page => {
+        setState({
+            isLoading: true,
+            data: [...state.data]
+        })
+
+        Http.send(`https://jsonplaceholder.typicode.com/todos/${page}`)
+            .then(response => {
+                return response.json()
+            })
+            .then(json => {
+                setTimeout(() => setState({
+                    isLoading: false,
+                    data: [...state.data, ...data]
+                }), 1000)
+            })
+            .catch(e => {
+                setState({
+                    isLoading: false,
+                    error: e,
+                    data: [...state.data]
+                })
+            })
+    }
 
     useEffect(() => {
-        dispatch(loadTodos())
+        getTodos(1)
     }, [])
 
+    // Filter
+    const filter = type => state.data.filter(todo => todo.type === type)
+
+    // View
     return (
         <div className="ttd-dashboard">
             <div className="ttd-dashboard__headline">
@@ -42,14 +95,13 @@ function Dashboard({todos, dispatch}) {
             </div>
             <div className="ttd-dashboard__columns">
                 <div className="ttd-dashboard__columns-inner">
-                    <Column title="To do"/>
-                    <Column title="In progress"/>
-                    <Column title="Completed"/>
+                    <Column isLoading={state.isLoading} title="To do" todos={filter("todo")}/>
+                    <Column isLoading={state.isLoading} title="In progress" todos={filter("in_progress")}/>
+                    <Column isLoading={state.isLoading} title="Completed" todos={filter("completed")}/>
                 </div>
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => ({todos: state.todos})
-export default connect(mapStateToProps)(Dashboard)
+export default Dashboard

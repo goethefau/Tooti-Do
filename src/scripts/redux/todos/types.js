@@ -1,5 +1,0 @@
-export default {
-    TODOS_LOADING: "TODOS_LOADING",
-    TODOS_LOADED: "TODOS_LOADED",
-    TODOS_ERROR: "TODOS_ERROR"
-}

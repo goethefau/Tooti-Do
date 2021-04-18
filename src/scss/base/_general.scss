@@ -38,3 +38,25 @@
     font-family: Roboto bold;
   }
 }
+
+.ttd-text {
+  &-primary {
+    color:$primary;
+  }
+
+  &-accent {
+    color:$accent;
+  }
+
+  &-dark {
+    color:$text;
+  }
+
+  &-light {
+    color:$text-light;
+  }
+
+  &-red {
+    color:$red;
+  }
+}
