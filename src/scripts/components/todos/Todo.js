@@ -4,7 +4,10 @@ import Moment from "react-moment"
 import {FORMAT} from "../../moment.config"
 
 function Todo({todo}) {
+    // Subtasks
+    const completed_sub_tasks = todo.subtasks.filter(todo => todo.completed).length
 
+    // General
     return (
         <div className="ttd-dashboard__column-todo">
             {
@@ -32,7 +35,7 @@ function Todo({todo}) {
                     </div>
                     <div className="ttd-dashboard__column-todo__meta-subtasks">
                         <i className="far fa-clipboard-list"/>
-                        6 / 9
+                        {completed_sub_tasks} / {todo.subtasks.length}
                     </div>
                     <Dropdown
                         renderTitle={() => {

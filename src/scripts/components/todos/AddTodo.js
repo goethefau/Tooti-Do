@@ -32,7 +32,7 @@ function AddTodo(props) {
     const toggleDrawer = () => setDrawer({show: true});
 
     // React hook form
-    const {handleSubmit, control, setError} = useForm({
+    const {handleSubmit, control, setValue} = useForm({
         resolver: yupResolver(schema),
         mode: "onChange"
     });
@@ -110,7 +110,11 @@ function AddTodo(props) {
                                 </div>
                             </div>
                             <div className="ttd-add-todo__group">
-                                <FileInput/>
+                                <FileInput
+                                    control={control}
+                                    name="files"
+                                    setValue={setValue}
+                                />
                             </div>
                             <div className="ttd-add-todo__group">
                                 <div className="ttd-add-todo__group-title">Add users</div>
@@ -120,7 +124,6 @@ function AddTodo(props) {
                                     style={{width: "100%"}}
                                     control={control}
                                     name="users"
-                                    setError={setError}
                                 />
                             </div>
                         </div>

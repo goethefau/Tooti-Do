@@ -110,14 +110,27 @@ const data = [
         ],
         subtasks:[
             {
-                first_name:"John",
-                second_name:"Bush",
-                img: "https://images.pexels.com/photos/920382/pexels-photo-920382.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                completed: false
             },
             {
-                first_name:"Michael",
-                second_name:"Curtis",
-                img: "https://images.pexels.com/photos/270968/pexels-photo-270968.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                completed: true
+            },
+            {
+                title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                completed: false
+            },   {
+                title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                completed: false
+            },
+            {
+                title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                completed: true
+            },
+            {
+                title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                completed: false
             },
         ]
     },
