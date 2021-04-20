@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Dropdown} from "rsuite";
 import Moment from "react-moment"
 import {FORMAT} from "../../moment.config"
+import Tooltip from "../Tooltip";
 
 function Todo({todo}) {
     // Subtasks
@@ -30,7 +31,7 @@ function Todo({todo}) {
                     <div className="ttd-dashboard__column-todo__meta-date">
                         <i className="fa fa-alarm-clock"/>
                         <Moment format={FORMAT}>
-                            {todo.due_date}
+                            {todo.date}
                         </Moment>
                     </div>
                     <div className="ttd-dashboard__column-todo__meta-subtasks">
@@ -40,10 +41,12 @@ function Todo({todo}) {
                     <Dropdown
                         renderTitle={() => {
                             return (
-                                <Button appearance="subtle"
-                                        className="ttd-dashboard__column-todo__meta-actions__button">
-                                    <i className="far fa-ellipsis-h"/>
-                                </Button>
+                                <Tooltip title="Actions">
+                                    <Button appearance="subtle"
+                                            className="ttd-dashboard__column-todo__meta-actions__button">
+                                        <i className="far fa-ellipsis-h"/>
+                                    </Button>
+                                </Tooltip>
                             );
                         }}
                         placement="topEnd"

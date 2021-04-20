@@ -5,7 +5,7 @@ const data = [
         priority: "high",
         title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, voluptatem",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Aliquam delectus nisi, non qui tempore unde veritatis",
-        due_date:"  2021-04-16 11:30",
+        date:"  2021-04-16 11:30",
         type: "todo",
         users: [
             {
@@ -44,7 +44,7 @@ const data = [
         priority: "high",
         title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, voluptatem",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Aliquam delectus nisi, non qui tempore unde veritatis",
-        due_date:"  2021-04-16 11:30",
+        date:"  2021-04-16 11:30",
         type: "in_progress",
         users: [
             {
@@ -84,7 +84,7 @@ const data = [
         priority: "high",
         title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, voluptatem",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        due_date:"  2021-04-16 11:30",
+        date:"  2021-04-16 11:30",
         type: "completed",
         users: [
             {

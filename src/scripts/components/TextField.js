@@ -2,11 +2,12 @@ import React from "react";
 import {Controller} from "react-hook-form";
 import {Input} from "rsuite";
 
-function Component({control, name, ...rest}) {
+function Component({control, name, defaultValue = "", ...rest}) {
     return (
         <Controller
             control={control}
             name={name}
+            defaultValue={defaultValue}
             render={(
                 {
                     field: {onChange, onBlur, value, ref},

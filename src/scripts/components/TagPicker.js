@@ -1,4 +1,4 @@
-import {Input, TagPicker} from "rsuite";
+import {TagPicker} from "rsuite";
 import React from "react";
 import {Controller} from "react-hook-form";
 

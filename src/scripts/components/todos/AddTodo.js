@@ -10,6 +10,7 @@ import FileInput from "../FileInput";
 import DatePicker from "../DatePicker";
 import TextField from "../TextField";
 import TagPicker from "../TagPicker";
+import PriorityPicker from "./PriorityPicker";
 
 // Schema
 const schema = yup.object().shape({
@@ -20,9 +21,11 @@ const schema = yup.object().shape({
         .required("This field is required"),
     users: yup
         .array()
+        .ensure()
         .min(1, "Please select users")
-
 })
+
+// Send data
 
 // General
 function AddTodo(props) {
@@ -36,7 +39,12 @@ function AddTodo(props) {
         resolver: yupResolver(schema),
         mode: "onChange"
     });
-    const onSubmit = (data) => console.log(data)
+
+    // Send data
+    const onSubmit = data => {
+        props.addTodo(data)
+        close()
+    }
 
     // View
     return (
@@ -78,35 +86,7 @@ function AddTodo(props) {
                             <div className="ttd-add-todo__group">
                                 <div className="ttd-add-todo__group-priority">
                                     <div className="ttd-add-todo__group-title m-0">Priority</div>
-                                    <div className="ttd-add-todo__group-priority__items">
-                                        <label className="ttd-add-todo__group-priority__item">
-                                            <input name="priority"
-                                                   className="ttd-add-todo__group-priority__item-input"
-                                                   type="radio"/>
-                                            <div
-                                                className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_normal">
-                                                Normal
-                                            </div>
-                                        </label>
-                                        <label className="ttd-add-todo__group-priority__item">
-                                            <input name="priority"
-                                                   className="ttd-add-todo__group-priority__item-input"
-                                                   type="radio"/>
-                                            <div
-                                                className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_medium">
-                                                Medium
-                                            </div>
-                                        </label>
-                                        <label className="ttd-add-todo__group-priority__item">
-                                            <input name="priority"
-                                                   className="ttd-add-todo__group-priority__item-input"
-                                                   type="radio"/>
-                                            <div
-                                                className="ttd-add-todo__group-priority__item__fake-radio ttd-add-todo__group-priority__item__fake-radio_high">
-                                                High
-                                            </div>
-                                        </label>
-                                    </div>
+                                    <PriorityPicker control={control}/>
                                 </div>
                             </div>
                             <div className="ttd-add-todo__group">

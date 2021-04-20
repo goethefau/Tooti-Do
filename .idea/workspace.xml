@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74c5dd93-56bc-4935-b64a-1e6925b4e270" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/scripts/components/Tooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/components/todos/PriorityPicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/components/todos/Toolbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/redux/todos/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/redux/todos/reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/redux/todos/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/FileInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/FileInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/TagPicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/TagPicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/TextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/TextField.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/components/todos/AddTodo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/todos/AddTodo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/todos/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/todos/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/todos/DashboardToolbar.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/components/todos/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/todos/Todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/todos/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/todos/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/components/_addTodo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/components/_addTodo.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/todos/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/redux/todos/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/redux/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/scripts/redux/todo" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -50,15 +57,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/scripts/redux/todo" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/assets/fonts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/scripts/redux/todo" />
+      <recent name="$PROJECT_DIR$/src/scripts/redux/todos" />
       <recent name="$PROJECT_DIR$/src/scripts/components/todos" />
       <recent name="$PROJECT_DIR$/src/scripts/components/Todos" />
       <recent name="$PROJECT_DIR$/public/images" />
-      <recent name="$PROJECT_DIR$/src/scss/base" />
-      <recent name="$PROJECT_DIR$/src/scss" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -103,7 +111,10 @@
       <workItem from="1618422087260" duration="8898000" />
       <workItem from="1618581976632" duration="9109000" />
       <workItem from="1618655531872" duration="8561000" />
-      <workItem from="1618737396190" duration="4984000" />
+      <workItem from="1618737396190" duration="5399000" />
+      <workItem from="1618814240796" duration="138000" />
+      <workItem from="1618818925727" duration="6357000" />
+      <workItem from="1618920393281" duration="3229000" />
     </task>
     <servers />
   </component>
